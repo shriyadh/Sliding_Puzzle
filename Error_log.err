@@ -1,0 +1,8 @@
+Fri Dec 10 03:18:54 2021 Error: File None does not exist. LOCATION: check_load() 
+Fri Dec 10 03:19:36 2021 Error: File None does not exist. LOCATION: check_load() 
+Fri Dec 10 04:58:39 2021 Error: File luigi.puz does not exist. LOCATION: check_load() 
+Fri Dec 10 04:58:47 2021 Error: File luigi.puz does not exist. LOCATION: check_load() 
+Fri Dec 10 04:59:39 2021 Error: File yoshi.puz does not exist. LOCATION: check_load() 
+Fri Dec 10 21:40:06 2021 Error: File None does not exist. LOCATION: check_load() 
+Sat Dec 11 12:24:13 2021 Error: File drh does not exist. LOCATION: check_load() 
+Sat Dec 11 12:24:22 2021 Error: Malformed Puzzle File! LOCATION: tiles_info() 

@@ -1,0 +1,102 @@
+
+Slider Puzzle Game
+==============================
+The design of my project follows object-oriented design protocols, making extensive use of Classes and objects to ensure a smooth game-play.
+The main() is located in the puzzle_game.py where we start off by defining separate functions to get all ".puz" files in the directory
+using os.getcwd() ---[ file_names() function ] ---- and creating a dictionary which contains the file names as "keys" and a nested list of
+information about the different puzzles stored as "values" ---[ create_dict() function ] ----. 
+Then, we start off the game by creating an instance of the Class GameBoard. The class gameboard has various methods which allows the main
+to call setup methods defined within it until the onclick function is activated. As we were taught much about procedural decomposition and
+the importance of assigning a function/method for each procudure or computation we want to perform, my entire design focusses on making sure
+each function has only one job and it can handle any inputs/errors while ensuring no interruption to the game. I also decided to keep my main()
+as short as possible in the interest of good design practices. Throughout my program, I have ensured good use of methods, nouns as attributes/
+variable names and verbs as function/ method names. The style guide has also been followed for the entire length of the design code.
+
+Class CreateTiles and Class Buttons were designed in order to mke each interactive component of the game an object of its own wile allowing 
+Gameboard to have complete access to the various methods defined within them. Class Buttons created different objects for the three 
+interactive buttons --- load, reset and quit ---. The methods defined within the class allow for these buttons to be displayed on screen
+at the appropriate positions, clear the turtles as well as identify when they have been clicked on. ---[ clicked_region() ] --- this function
+takes the x-y coordinates as input from the click handler and does simple computation be=ased on its size and present location to check
+if it has been clicked on and based on the boolean value returned from this method, different methods are called on in the GameBoard class.
+The CreateTiles class creates different instances of each tile(puzzle piece) generated based on the length of the puzzle and assigns a 
+turtle of its own to each tile that is instantiated. This class has methods that display the tiles in their appropriate positions, clears them
+when a new file is to be loaded, allows for swapping of images, checks if the particular tile has been clicked on by performing simple 
+computation, checks if it is a blank or not and the __eq__ function helps in determining if the present orientation of tiles is in thw winning
+position.
+
+Class GameBoard is where the major component of the design lays. The flow of execution beetween different methods allows for a safe transition 
+between commands. The start_display() sets up the splash screen and takes inputs from the user (name and moves) which then calls setup_game_board()
+which draws the three shapes demarcating gameplay area, leaderboard and status area. The interative buttons --- quit, reset, load --- are displayed 
+using the load_buttons() which creates instances of the class Buttons and displays them using the".show_button()" method defined in Buttons class.
+The leaderboard area is setup and the file containing the list of leaders is read and the top 7 players of the game are displayed. By default, 
+the mario.puz file is scrambled, loaded and displayed on the screen. Each tile is a turtle of its own as it is intantiated using the CreateTiles class
+in the orig_tiles() method. The flow of control then goes back to main which activates the onlick() which then passes on the clicked x-y coordinates
+to the click_handler() in GameBoard. Depending on where the user has clicked, the method checks if load, quit or reset butto is clicked or if any of 
+the tiles has been clicked. Load ---> allows user to load a different puzzle by displaying list of puzzles vailable and displays appropriate error
+messages. Reset -----> gives hint to the user about the solution of the puzzle and resets the puzzle into the winning configuration and allows user 
+to solve it further giving a better chance at winning. The quit button closes the game. If any of the tiles are clicked, the click_handler checks 
+which tile has been clicked and then calls on valid_move to see if the tile clicked is next to the blank and if the move would be legal. Based on 
+the boolen vale returned, if the swap is valid, the blank and clicked tile switch places, else nothing happens. After each swap, the present
+configuration is compared to the winning configuration, and if the player has won, appropriate win message is displayed and the leaderboard file
+is updated and the program ends. If the move is not a winning move, it is checked if the number of moves left is less than the moves the player 
+chose in the beginning and the game continues till all the moves have been used up and the payer loses, in which can appropriate message is 
+displayed and the program shos credits and quits.
+
+All in all, the program design has been created based off and as close to the demo video that was given, with an attempt to imitate the exact 
+graphic interface that Prof K implemented. No big trade-off decisions were made and the game has full, complete and exact functionality as was
+expected and the ability to handle all errors that it might encounter. Hope you enjoy playing the game!
+
+The following files have been submitted in the zip:
+-------------------------------------------------------
+
+puzzle_game.py
+------------------
+This program makes a board game, loads different puzzle files, creates an interactive interface for the user which allows them
+to solve the puzzle within the no. of moves specified, reset the puzzle to get hints and quit the game!
+
+==============================================================================================================================================
+
+setup_game_board.py
+-------------------
+This program contains functions to set up the gamebaord area, leadership and status area.
+
+===============================================================================================================================================
+
+Buttons.py
+-----------------
+This class creates each interactive button (load, quit,reset) as an object of its own and defines appropriate methods for it.
+
+===============================================================================================================================================
+
+CreateTiles.py
+------------------
+This class creates each tile of the puzzle as an object and defines appropriate methods for it.
+
+==============================================================================================================================================
+
+GameBoard.py
+----------------
+This class is the centre of control for the game. It handles the clicks, controls display of various components of the game, and provides for 
+smooth functioning during game-play.
+================================================================================================================================================
+
+leaders.txt 
+-----------------
+List of all the default leaders to be displayed on the leaderboard when the program first runs.
+
+================================================================================================================================================
+
+design.txt 
+-----------------
+
+Explanation of game design.
+
+================================================================================================================================================
+
+5001_error.err
+------------------
+
+Logs all the errors occuring in the game with date, time, error message and location.
+
+================================================================================================================================================
+
